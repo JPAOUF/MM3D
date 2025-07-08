@@ -28,6 +28,31 @@ controls.update();
 
 const KP = {};
 let I = 0;
+let CC = 1;
+
+function criarPersonagens() {
+
+  if (CC > characterController.length) {
+    const diff = CC - characterController.length;
+    for (let i = 0; i < diff; i++) {
+      const novo = new CharacterController(model.clone(), 0.1);
+      characterController.push(novo);
+      scene.add(novo.model);
+    }
+  }
+
+  if (CC < characterController.length) {
+    const diff = characterController.length - CC;
+    for (let i = 0; i < diff; i++) {
+      const ultimo = characterController.pop();
+      scene.remove(ultimo.model);
+    }
+
+    if (I >= CC) {
+      I = 0;
+    }
+  }
+}
 
 window.addEventListener('keydown', (event) => {
   KP[event.code] = true;
@@ -52,6 +77,16 @@ window.addEventListener('keydown', (event) => {
         }
   }
 
+  if (event.key == '+') {
+    CC++;
+    criarPersonagens();
+  }
+
+  if (event.key == '-' && CC > 1) {
+    CC--;
+    criarPersonagens();
+  }
+
 });
 
 window.addEventListener('keyup', (event) => {
@@ -65,10 +100,7 @@ const characterController = [];
 loader.load('character1.glb', function ( gltf ) {
   
   model = gltf.scene;
-  for(let i=0;i<2;i++){
-    characterController[i] = new CharacterController(model.clone(), 0.1);
-    scene.add(characterController[i].model);
-  }
+  criarPersonagens();
 
 }, undefined, function ( error ) {
 
