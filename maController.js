@@ -39,16 +39,16 @@ export class CharacterController {
       }
     
       if (this.movingDirection) {
-        if (this.movingDirection === 'left') {
+        if (this.movingDirection == 'left') {
             this.model.position.z -= this.speed;
         } 
-        if (this.movingDirection === 'right') {
+        if (this.movingDirection == 'right') {
             this.model.position.z += this.speed;
         } 
-        if (this.movingDirection === 'up') {
+        if (this.movingDirection == 'up') {
             this.model.position.x += this.speed;
         } 
-        if (this.movingDirection === 'down') {
+        if (this.movingDirection == 'down') {
             this.model.position.x -= this.speed;
         }
       }
