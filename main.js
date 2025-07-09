@@ -33,9 +33,15 @@ const floorMaterial = new THREE.MeshPhongMaterial({
 });
 const floor = new THREE.Mesh(floorGeometry, floorMaterial);
 floor.rotation.x = Math.PI / 2;
-floor.receiveShadow = true;
 scene.add(floor);
 
+function updateFloorPosition() {
+  if (characterController[I]) {
+    const charPos = characterController[I].model.position;
+    floor.position.x = Math.round(charPos.x / 50) * 50;
+    floor.position.z = Math.round(charPos.z / 50) * 50;
+  }
+}
 const KP = {};
 let I = 0;
 let CC = 1;
@@ -127,6 +133,7 @@ function animate() {
   }
 
   controls.update();
+  updateFloorPosition();
   renderer.render( scene, camera );
 }
 
