@@ -26,7 +26,7 @@ controls.keyPanSpeed = 20;
 camera.position.set( 0, 6, 6 );
 controls.update();
 
-const floorGeometry = new THREE.PlaneGeometry(99999999999999999, 99999999999999999);
+const floorGeometry = new THREE.PlaneGeometry(50, 50);
 const floorMaterial = new THREE.MeshPhongMaterial({
   color: 0x808080,
   side: THREE.DoubleSide
