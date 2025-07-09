@@ -26,7 +26,7 @@ controls.keyPanSpeed = 20;
 camera.position.set( 0, 6, 6 );
 controls.update();
 
-const floorGeometry = new THREE.PlaneGeometry(50, 50);
+const floorGeometry = new THREE.PlaneGeometry(9999999, 9999999);
 const floorMaterial = new THREE.MeshPhongMaterial({
   color: 0x808080,
   side: THREE.DoubleSide
@@ -42,6 +42,7 @@ function updateFloorPosition() {
     floor.position.z = Math.round(charPos.z / 50) * 50;
   }
 }
+
 const KP = {};
 let I = 0;
 let CC = 1;
