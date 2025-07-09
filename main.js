@@ -26,6 +26,16 @@ controls.keyPanSpeed = 20;
 camera.position.set( 0, 6, 6 );
 controls.update();
 
+const floorGeometry = new THREE.PlaneGeometry(99999999999999999, 99999999999999999);
+const floorMaterial = new THREE.MeshPhongMaterial({
+  color: 0x808080,
+  side: THREE.DoubleSide
+});
+const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+floor.rotation.x = Math.PI / 2;
+floor.receiveShadow = true;
+scene.add(floor);
+
 const KP = {};
 let I = 0;
 let CC = 1;
